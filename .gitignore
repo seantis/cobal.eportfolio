@@ -5,3 +5,4 @@ eportfolio.ini
 eportfolio.db
 eportfolio.egg-info
 eportfolio.egg-info/*
+.coverage
