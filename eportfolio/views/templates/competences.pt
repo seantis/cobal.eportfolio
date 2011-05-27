@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+	  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block metal:fill-slot="head">
+    
+    <script type="text/javascript" src="${api.static_url('js/ordering.js')}"></script>
+    
+</tal:block>
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1><tal:block i18n:translate="competences">Competences</tal:block></h1>
+    
+    <div class="add-box"><button class="add" onclick="parent.location='${api.model_url(context, 'add.html')}'" i18n:translate="add_new_competence">Add new competence</button></div>
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+        
+        <tr>
+            <th style="background: #666; width:180px; color: #fff" i18n:translate="competence">Competence</th>
+            <th>
+                <span style="margin-right: 160px" i18n:translate="indicator_set">Indicator Set</span>
+                <span i18n:translate="indicator">Indicator</span> 
+            </th> 
+        </tr>
+        
+        <tr tal:repeat="competence context" class="competence item" id="${competence.id}">
+            <th>${competence.title} <br /><br />
+                
+                <div class="small-button" style="width: 200px; white-space:nowrap;">
+                    <button class="add" onclick="parent.location='${api.model_url(competence['indicator_sets'], 'add.html')}'" i18n:translate="add_indicator_set">Add indicator set</button><br /><br />
+                    <button class="edit" tal:condition="api.has_permission('edit', competence)" onclick="parent.location='${api.model_url(competence, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="remove" tal:condition="api.has_permission('remove', competence)" i18n:translate="remove">Remove</button>
+                	<button class="up" i18n:translate="up">Up</button>
+                	<button class="down" i18n:translate="down">Down</button>
+                </div>
+            </th>
+            <td>
+                <table class="inner-table container" id="${api.model_url(competence, 'indicator_sets')}">
+                    <tr tal:repeat="indicator_set python: competence['indicator_sets']" class="item ${str(repeat['indicator_set'].odd() and 'even' or 'odd')}" id="${indicator_set.id}">
+                        <td style="vertical-align: top; width: 180px;">
+                            <b>${indicator_set.title}</b><br /><br />
+                            <div class="small-button" style="white-space:nowrap;">
+                                <button class="add" onclick="parent.location='${api.model_url(indicator_set['indicators'], 'add.html')}'" i18n:translate="add_indicator">Add indicator</button><br /><br />
+                                <button class="edit" tal:condition="api.has_permission('edit', indicator_set)" onclick="parent.location='${api.model_url(indicator_set, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                                <button class="remove" tal:condition="api.has_permission('remove', indicator_set)" i18n:translate="remove">Remove</button>
+                            	<button class="up" i18n:translate="up">Up</button>
+                            	<button class="down" i18n:translate="down">Down</button>
+                            </div>
+                        </td>
+                        <td>
+                            <ul class="sortable container" id="${api.model_url(indicator_set, 'indicators')}">
+                                <li class="ui-state-default item" tal:repeat="indicator python: indicator_set['indicators']" id="${indicator.id}"> 
+                                    <div>${indicator.title}
+                                        <div class="small-button" style="text-align: right;">
+                                            <button class="edit" tal:condition="api.has_permission('edit', indicator)" onclick="parent.location='${api.model_url(indicator, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                                            <button class="remove" tal:condition="api.has_permission('remove', indicator)" i18n:translate="remove">Remove</button>
+                                            <button class="up" i18n:translate="up">Up</button>
+                                        	<button class="down" i18n:translate="down">Down</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    <h1 style="margin-top: 25px" i18n:translate="meta_competences">Meta-Kompetenzen</h1>
+    <div class="add-box" style="padding: 20px; text-align: left">
+        <span i18n:translate="meta_competences_help">Meta-Competences are higher-order abilities. Go to the meta
+        competence overview page:</span>
+        <a href="${request.application_url}/meta_competences" i18n:translate="meta_competences">Meta-competences</a>
+    </div>
+        
+
+</div>
+
+</html>

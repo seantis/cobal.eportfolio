@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+	  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content">
+    
+    <h1><tal:block i18n:translate="">Members</tal:block> - ${context.title}</h1>   
+    
+    <div class="add-box">
+        <form action="" method="post">
+            <select name="student_id">
+                <option value="" selected="selected" i18n:translate="select_student">Select student</option> 
+                <option tal:repeat="student all_students" value="${student.id}">${student.first_name} ${student.last_name}</option> 
+            </select>
+            <form:error name="student_id"/>
+            <button type="submit" class="add" name="form.submitted" value="Add student" i18n:translate="add_student">Add Student</button>
+        </form>
+    </div>
+    
+    <table class="listing-table">
+        <tr>
+            <th i18n:translate="name">Name</th>
+            <th></th>
+        </tr>
+        <tr tal:repeat="student students" tal:attributes="class python:str(repeat['student'].odd() and 'even' or 'odd')">
+            <td><a  href="${api.model_url(api.root, 'users', str(student.id)+'')}">${student.first_name} ${student.last_name}</a></td>
+            <td>
+                <div class="small-button">
+                    <button class="edit" onclick="parent.location='${api.model_url(student, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="email" onclick="parent.location='mailto:${student.email}'" i18n:translate="email">email</button>
+                    <a href="${api.model_url(context, 'members.html', query={'remove_student':student.id})}" i18n:translate="remove">Remove</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+
+    <br /><br />
+    <h1 i18n:translate="project_teachers">Project Teachers</h1>
+    
+    <div class="add-box">
+        <form action="" method="post">
+            <select name="teacher_id">
+                <option value="" selected="selected" i18n:translate="select_teacher">Select teacher</option> 
+                <option tal:repeat="teacher all_teachers" value="${teacher.id}">${teacher.first_name} ${teacher.last_name}</option> 
+            </select>
+            <form:error name="teacher_id"/>
+            <button type="submit" class="add" name="form.submitted" value="Add teacher" i18n:translate="add_teacher">Add teacher</button>
+        </form>
+    </div>
+    
+    <table class="listing-table">
+        <tr>
+            <th i18n:translate="name">Name</th>
+            <th></th>
+        </tr>
+        <tr tal:repeat="teacher teachers" tal:attributes="class python:str(repeat['teacher'].odd() and 'even' or 'odd')">
+            <td>${teacher.first_name} ${teacher.last_name}</td>
+            <td>
+                <div class="small-button">
+                    <button class="edit" onclick="parent.location='${api.model_url(teacher, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="email" onclick="parent.location='mailto:${teacher.email}'" i18n:translate="email">email</button>
+                    <a href="${api.model_url(context, 'members.html', query={'remove_teacher':teacher.id})}" i18n:translate="remove">Remove</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+</div>
+</html>

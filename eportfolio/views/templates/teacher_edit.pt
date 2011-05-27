@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 tal:condition="add_form" i18n:translate="add_new_teacher">Add New Teacher</h1>
+    <h1 tal:condition="not add_form"><tal:block i18n:translate="edit">Edit</tal:block> ${teacher.first_name} ${teacher.last_name}</h1>
+    
+    <form action="" method="post" enctype="multipart/form-data">
+        
+        <table class="form-table">
+            <tr class="odd">
+                <th><label for="first_name" i18n:translate="first_name">First Name</label></th>
+                <td><input id="first_name" type="text" name="first_name" /><br /><form:error name="first_name"/></td>
+                <th><label for="last_name" i18n:translate="last_name">Last Name</label></th>
+                <td><input id="last_name" type="text" name="last_name" /><br /><form:error name="last_name"/></td>
+            </tr>
+            <tr>
+                <th><label for="email" i18n:translate="email">Email</label></th>
+                <td><input id="email" type="text" name="email" /><br /><form:error name="email"/></td>
+                <th><label tal:condition="add_form" for="password" i18n:translate="password">Password</label></th>
+                <td tal:condition="add_form">
+                    <input id="password" type="password" name="password" /><br />
+                    <form:error name="password"/>
+                    <div style="width: 200px" i18n:translate="password_activation_email">You don't need to enter a password here. If you do enter one then no activation email is sent to the user.</div>
+                </td>
+                <td tal:condition="not add_form"></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="portrait" i18n:translate="portrait">Portrait</label></th>
+                <td colspan="2">
+                    <input id="portrait" name="portrait" type="file" size="50" maxlength="100000" accept="image/*" /><br />
+                    <form:error name="portrait"/>
+                </td> 
+                <td>
+                    <span class="portrait" tal:define="user python: teacher">
+            		    <img tal:condition="python: not user.portrait" width="75" height="75" src="${api.static_url('imgs/defaultUser.gif')}"/>
+            		    <img tal:condition="python: user.portrait" src="${api.model_url(api.root, 'users', str(user.id), 'files', str(user.portrait.id))}" />
+            		</span>
+            	</td>
+            </tr>
+        </table>
+        
+        <div class="form-controls">
+            <button type="submit" class="save" name="form.submitted" value="Save" i18n:translate="save">Save</button>
+            <button type="submit" class="cancel" name="form.cancel" value="Cancel" i18n:translate="cancel">Cancel</button>
+        </div>
+        
+
+    </form>
+
+</div>
+</html>

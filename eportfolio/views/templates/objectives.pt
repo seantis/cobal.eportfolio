@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+	  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block metal:fill-slot="head">
+    
+    <script type="text/javascript" src="${api.static_url('js/ordering.js')}"></script>
+    
+</tal:block>
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1><tal:block i18n:translate="objectives">Objectives</tal:block> - ${project.title}</h1>
+    
+    <div class="add-box" tal:condition="python: hasattr(api.authenticated_user(), 'journal_entries')">
+        <button class="add" onclick="parent.location='${api.model_url(context, 'add.html')}'" i18n:translate="add_objective">Add Objective</button>
+    </div>
+    
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+        <tr>
+            <th i18n:translate="title">Title</th>
+            <th i18n:translate="description">Description</th>
+            <th i18n:translate="competences">Competences</th>
+            <th></th>
+        </tr>
+        <tr tal:repeat="objective project['objectives']" tal:attributes="class python: 'item ' + str(repeat['objective'].odd() and 'even' or 'odd')" id="${objective.id}">
+            <td>
+                ${objective.title}
+            </td>
+            <td tal:content="structure objective.description"></td>
+            <td>
+                <ul tal:repeat="competence objective.competences">
+                    <li>${competence.title}</li>
+                </ul>
+            </td>
+            <td>
+                <div class="small-button">
+                    <button class="edit" onclick="parent.location='${api.model_url(objective, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="remove" i18n:translate="remove">Remove</button>
+                	<button class="up" i18n:translate="up">Up</button>
+                	<button class="down" i18n:translate="down">Down</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <div class="add-box">
+        <button class="print" onclick="parent.location='${api.model_url(context, 'pdf')}'" i18n:translate="print_objectives">Print Objectives</button>
+    </div>
+    
+</div>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div id="navigation" metal:fill-slot="navigation">
+    <ul id="menu">
+        <li><a href=""><span i18n:translate="activity">Activity</span></a></li>
+        <li><a href=""><span i18n:translate="profile">Profile</span></a></li>
+        <li><a class="current" href=""><span i18n:translate="job_application">Job Application</span></a></li>
+        <li><a href=""><span i18n:translate="stats">Stats</span></a></li>
+    </ul>
+</div>
+      
+<div metal:fill-slot="content">
+    
+    <h1><tal:block i18n:translate="job_application_of">Job Application</tal:block> - ${student.first_name} ${student.last_name}</h1>
+    
+    <h3 i18n:translate="personal_data">Personal Data</h3>
+    
+    <table class="listing-table">
+        <tr class="odd">
+            <th i18n:translate="name">Name</th>
+            <td>${student.first_name} ${student.last_name}</td>
+            <th i18n:translate="date_of_birth">Date of Birth</th>
+            <td tal:content="student.date_of_birth.strftime('%d.%m.%Y')"></td>
+        </tr>
+        <tr class="even">
+            <th i18n:translate="languages">Languages</th>
+            <td colspan="3">${student.languages}</td>
+        </tr>            
+    </table>
+    
+    <h3 i18n:translate="experiences_interests">Experiences, Interests</h3>
+    <table class="listing-table">
+        <tr class="odd">
+            <th i18n:translate="experiences">Experiences</th>
+            <td colspan="3" tal:content="structure student.experiences"></td>
+        </tr>
+        <tr class="even">
+            <th i18n:translate="interests">Interests</th>
+            <td colspan="3" tal:content="structure student.interests"></td>
+        </tr>
+        <tr class="odd">
+            <th i18n:translate="hobbies">Hobbies</th>
+            <td colspan="3" tal:content="structure student.hobbies"></td>
+        </tr>
+    </table>
+    
+    <h3 i18n:translate="projects">Projects</h3>
+    
+    <div class="notice" style="margin-top: 15px" tal:condition="not context.projects.first()" i18n:translate="no_assigned_project">No projects! Ask your Teacher to assign you to an active project.</div>    
+    
+    <tal:block tal:repeat="proj_data data">
+    
+        <table class="listing-table" tal:define="project python: proj_data['project']">
+            <tr>
+                <th colspan="2">${project.title}</th>
+                <th><tal:block tal:content="project.start_date.strftime('%d.%m.%Y')" /> - <tal:block tal:content="project.end_date.strftime('%d.%m.%Y')" /></th>
+            </tr>
+            <tr>
+                <td colspan="3" tal:content="structure project.description"></td>
+            </tr>
+            <tr class="even">
+                <th i18n:translate="gained_competences">Gained Competences</th>
+                <td colspan="2">
+                    <table class="inner-table">
+                        <tr tal:repeat="comp_data python: proj_data['competences']" tal:attributes="class python:str(repeat['comp_data'].odd() and 'even' or 'odd')">
+                            <tal:block tal:define="competence = comp_data['competence']">
+                                <td>${competence.title}</td>
+                            </tal:block>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </tal:block>
+
+</div>
+
+<div id="right-column" metal:fill-slot="right-column">
+    <div class="export-panel">
+        <fieldset>
+            <legend i18n:translate="export_options">Export Options</legend>
+            <form action="application.pdf" method="GET">
+                <input checked="checked" id="show_projects" type="checkbox" name="show_projects" />
+                <label for="show_projects" i18n:translate="show_projects">Show Projects</label><br />
+                <input checked="checked" id="show_journal" type="checkbox" name="show_journal" />
+                <label for="show_journal" i18n:translate="show journal">Show Journal</label><br /><br />
+                
+                <button class="print" type="submit" name="form.submitted" value="Generate PDF" i18n:translate="generate_pdf">Generate PDF</button>
+            </form>
+        </fieldset>
+    </div>
+</div>
+
+</html>

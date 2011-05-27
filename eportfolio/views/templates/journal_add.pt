@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block metal:fill-slot="head">
+    <script type="text/javascript">
+    	
+    	function toggle_image_file() {
+    	    if($('input[name=image_action]:checked').val() == 'replace') {
+                $('#image_file').attr('disabled', '');
+            } else {
+                $('#image_file').attr('disabled', 'disabled');
+            }
+    	}
+    	
+    	$(function() {
+    		$(".accordion").accordion();
+    	});
+    
+	    $(document).ready (function() {
+	       
+	        toggle_image_file();
+	        
+	        $("input[name=image_action]").bind('change', function() {
+	            toggle_image_file();
+	        });
+	        
+	    });
+    
+    </script>
+</tal:block>
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 tal:condition="add_form"><tal:block i18n:translate="add_new_journal_entry_for">Add New Journal Entry for</tal:block> ${project.title}</h1>
+    <h1 tal:condition="not add_form" i18n:translate="edit_journal_entry">Edit Journal Entry</h1>
+    
+    <form action="" method="post" enctype="multipart/form-data">
+        <table class="form-table">
+            <tr class="odd">
+                <th>
+                    <label for="text" i18n:translate="text">Text</label>
+                </th>
+                <td colspan="5"><textarea id="text" name="text" cols="100" rows="7"></textarea>
+                    <br /><form:error name="text"/>
+                </td>
+            </tr>
+            <tr class="even" tal:condition="indicator_sets">
+                <th>
+                    <label for="indicators" i18n:translate="indicators">Indicators</label>
+                </th>
+                <td>
+                    <div class="accordion" id="indicators">
+                        <tal:block tal:repeat="indicator_set indicator_sets" class="indicators">
+                            <h3><a href="#">${indicator_set['competence']}: ${indicator_set['title']}</a></h3>
+                            <div>
+                                <table class="inner-table">
+                                    <tr tal:repeat="indicator indicator_set['indicators']">
+                                        <td width="30"><input id="${indicator['id']}" value="${indicator['id']}" type="checkbox" name="indicators" /></td> 
+                                        <td width="600"><label for="${indicator['id']}" tal:content="structure indicator['description']"></label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </tal:block>
+                    </div>
+                </td>
+            </tr>
+            <tr class="odd">
+                <th i18n:translate="image">Image</th>
+                <td colspan="2" tal:condition="not entry.image">
+                    <input id="image" name="image" type="file" size="50" maxlength="100000" accept="image/*" /><br />
+                    <form:error name="image"/>
+                </td>
+                
+                <td tal:condition="entry.image">
+                    
+                    <input class="noborder" type="radio" value="nochange" name="image_action" id="image_nochange" />
+                    <label for="image_nochange" i18n:translate="keep-image">Keep the image</label>
+                    <br />
+
+                    <input class="noborder" type="radio" value="delete" name="image_action" id="image_delete" />
+                    <label for="image_delete" i18n:translate="delete-image">Delete the image</label>
+                    <br />
+
+                    <input class="noborder" type="radio" value="replace" name="image_action" id="image_upload" />
+                    <label for="image_upload" i18n:translate="replace-image">Replace the image</label>
+
+                    <input name="image" type="file" size="50" maxlength="100000" accept="image/*" id="image_file" /><br />
+                    <form:error name="image"/>
+
+                </td>
+                
+            </tr>
+
+        </table>
+        
+        <div class="form-controls">
+            <button tal:condition="add_form" type="submit" class="add" name="form.submitted" value="Add entry" i18n:translate="add_entry">Add entry</button>
+            <button tal:condition="not add_form" type="submit" class="add" name="form.submitted" value="Save" i18n:translate="save">Save</button>
+            <button type="submit" class="cancel" name="form.cancel" value="Cancel" i18n:translate="cancel">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
+</html>

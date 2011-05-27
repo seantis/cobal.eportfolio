@@ -1,0 +1,5 @@
+Lieber ${first_name} ${last_name},
+
+Um Dein Passwort zu setzen, besuchst Du einfach folgende Adresse: ${reset_url}
+
+COBAL e-Portfolio: http://www.cobal.eu

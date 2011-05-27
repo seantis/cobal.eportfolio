@@ -1,0 +1,47 @@
+<div metal:define-macro="entries" class="container" id="${api.model_url(project['entries']).rstrip('/')}" i18n:domain="eportfolio">
+    <div class="add-box" tal:condition="python: hasattr(api.authenticated_user(), 'journal_entries')">
+        <button class="add" onclick="parent.location='${api.model_url(project, 'add_entry.html')}'" i18n:translate="add_journal_entry">Add Journal Entry</button>
+    </div>
+
+    <div tal:repeat="entry project['entries']" id="${str(entry.id)}" class="item journal-entry">
+		<span class="portrait" tal:define="user python: entry.user">
+		    <img tal:condition="python: not user.portrait" width="100" height="100" alt="${entry.user.first_name} ${entry.user.last_name}" src="${api.static_url('imgs/defaultUser.gif')}"/>
+	        <img tal:condition="python: user.portrait" alt="${entry.user.first_name} ${entry.user.last_name}" src="${api.model_url(api.root, 'users', str(user.id), 'files', str(user.portrait.id))}" /> 
+		</span>
+        <div class="discreet date">
+            <span class="author">
+                <span tal:define="student_link python: (api.has_permission('edit', entry) and not 'group:teachers' in entry.user.groups) or ('group:teachers' in api.groups() and not 'group:teachers' in entry.user.groups)">
+                    <a tal:condition="student_link"
+                       href="${api.model_url(api.root, 'users', str(entry.user.id), 'stats.html')}"
+                       tal:attributes="class python: api.has_permission('edit', entry) and 'mine' or ''">
+                       ${entry.user.first_name} ${entry.user.last_name}
+                    </a>
+                    <span tal:attributes="class python: api.has_permission('edit', entry) and 'mine' or ''" 
+                          tal:condition="not student_link">
+                          ${entry.user.first_name} ${entry.user.last_name}</span>
+                </span>
+             </span>
+             : ${entry.date.strftime('%d.%m.%Y %H:%M')}
+            <button tal:condition="python: api.has_permission('edit', entry)" class="edit" onclick="parent.location='${api.model_url(entry, 'edit.html')}'" i18n:translate="edit">Edit</button>
+            <button tal:condition="python: api.has_permission('remove', entry)" class="remove" i18n:translate="remove">Remove</button> 
+        </div>
+        
+        <div class="entry_text" tal:content="structure entry.text"></div> 
+        
+        <div class="visual-clear" style="margin-bottom: 5px"></div>
+        
+        <div tal:condition="entry.image" id="images">
+            <div class="journal_image">
+                <a class="fancybox iframe" href="${api.model_url(api.root, 'users', str(entry.user.id), 'files', str(entry.image.id))}"><img src="${api.model_url(api.root, 'users', str(entry.user.id), 'files', str(entry.image.id))}"/></a>
+            </div>
+        </div>
+        <div class="visual-clear" style="margin-bottom: 5px"></div>
+        
+        <div class="indicators">Tags: 
+            <span tal:repeat="indicator python: entry.indicators"><span class="tipTip" title="${indicator.description}"><i>${indicator.title}</i></span><span tal:condition="python: not repeat['indicator'].end">, </span></span>
+        </div>
+    
+		<div tal:replace="structure python: comments_view(entry['comments'], request)" /> 
+
+  	</div>
+</div>

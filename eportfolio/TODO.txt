@@ -1,0 +1,36 @@
+Bugs
+============
+- translate error messages
+
+Todo
+=============    
+- Show image in a lightbox
+  use: http://fancybox.net/; width: 500px, heigt: 300px 
+- upload images for journal entries! http://valums.com/ajax-upload/
+
+    
+Workflows (WAIT WITH IMPLEMENTATION)
+===================
+- if yes then a workflow for the journal entries makes sense
+  - states: 
+      - visible (default)
+      - private
+  - transitions
+      - retract
+      - publish
+  - security:
+      - visible (all project members)
+      - private (author only)
+      
+  see in karl3 or http://srikanth-suri.blogspot.com/2010/02/how-to-create-workflow-for-repoze.html
+  
+  
+Groups vs. Projects (WAIT WITH IMPLEMENTATION) 
+===================  
+Projects are concept from the project management approach and specific for the project in bremen. (learning) groups would be much more
+generic.  
+
+Output
+===================
+- Make PDF file look nicer
+- RTF File as Output

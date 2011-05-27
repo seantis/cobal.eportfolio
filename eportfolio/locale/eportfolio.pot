@@ -1,0 +1,884 @@
+# Translations template for eportfolio.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the eportfolio project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: eportfolio 0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2011-04-25 17:53+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.5\n"
+
+#: eportfolio/views/menu.py:98 eportfolio/views/menu.py:109
+msgid "Home"
+msgstr ""
+
+#: eportfolio/views/menu.py:120 eportfolio/views/menu.py:213
+msgid "Projects"
+msgstr ""
+
+#: eportfolio/views/menu.py:130 eportfolio/views/templates/dashboard.pt:55
+msgid "Users"
+msgstr ""
+
+#: eportfolio/views/menu.py:140 eportfolio/views/menu.py:203
+msgid "Competences"
+msgstr ""
+
+#: eportfolio/views/menu.py:169
+msgid "Activity"
+msgstr ""
+
+#: eportfolio/views/menu.py:183
+msgid "Profile"
+msgstr ""
+
+#: eportfolio/views/menu.py:193
+msgid "Job Application"
+msgstr ""
+
+#: eportfolio/views/menu.py:225
+msgid "Activities"
+msgstr ""
+
+#: eportfolio/views/menu.py:239 eportfolio/views/templates/members.pt:12
+msgid "Members"
+msgstr ""
+
+#: eportfolio/views/menu.py:249
+msgid "Objectives"
+msgstr ""
+
+#: eportfolio/views/stats.py:62
+msgid "Achieved"
+msgstr ""
+
+#: eportfolio/views/stats.py:63
+msgid "Achievable"
+msgstr ""
+
+#. Default: Remove
+#: eportfolio/views/templates/comments.pt:33
+#: eportfolio/views/templates/competences.pt:61
+#: eportfolio/views/templates/competences.pt:50
+#: eportfolio/views/templates/competences.pt:37
+#: eportfolio/views/templates/journal_entries.pt:17
+#: eportfolio/views/templates/members.pt:68
+#: eportfolio/views/templates/members.pt:36
+#: eportfolio/views/templates/meta_competences.pt:29
+#: eportfolio/views/templates/objectives.pt:44
+#: eportfolio/views/templates/projects.pt:61
+#: eportfolio/views/templates/projects.pt:37 eportfolio/views/templates/users.pt:74
+msgid "remove"
+msgstr ""
+
+#. Default: on
+#: eportfolio/views/templates/comments.pt:32
+msgid "on"
+msgstr ""
+
+#. Default: Posted by
+#: eportfolio/views/templates/comments.pt:28
+msgid "posted_by"
+msgstr ""
+
+#. Default:
+#: eportfolio/views/templates/comments.pt:22
+msgid "comments"
+msgstr ""
+
+#. Default: Add Comment
+#: eportfolio/views/templates/comments.pt:15
+msgid "add_comment"
+msgstr ""
+
+#. Default: &raquo; Comment
+#: eportfolio/views/templates/comments.pt:8
+msgid "comment"
+msgstr ""
+
+#. Default: Cloud
+#: eportfolio/views/templates/competence_cloud.pt:8
+msgid "cloud"
+msgstr ""
+
+#. Default: Cancel
+#: eportfolio/views/templates/competence_edit.pt:38
+#: eportfolio/views/templates/indicator_edit.pt:38
+#: eportfolio/views/templates/indicator_set_edit.pt:29
+#: eportfolio/views/templates/journal_add.pt:105
+#: eportfolio/views/templates/meta_competence_edit.pt:29
+#: eportfolio/views/templates/objective_edit.pt:39
+#: eportfolio/views/templates/project_edit.pt:72
+#: eportfolio/views/templates/student_edit.pt:71
+#: eportfolio/views/templates/teacher_edit.pt:52
+msgid "cancel"
+msgstr ""
+
+#. Default: Save
+#: eportfolio/views/templates/competence_edit.pt:37
+#: eportfolio/views/templates/indicator_edit.pt:37
+#: eportfolio/views/templates/indicator_set_edit.pt:28
+#: eportfolio/views/templates/journal_add.pt:104
+#: eportfolio/views/templates/meta_competence_edit.pt:28
+#: eportfolio/views/templates/objective_edit.pt:38
+#: eportfolio/views/templates/project_edit.pt:71
+#: eportfolio/views/templates/student_edit.pt:70
+#: eportfolio/views/templates/teacher_edit.pt:51
+msgid "save"
+msgstr ""
+
+#. Default: Select meta competence
+#: eportfolio/views/templates/competence_edit.pt:27
+msgid "select_meta_competence"
+msgstr ""
+
+#. Default: Meta competence
+#. Default: Meta Competences
+#: eportfolio/views/templates/competence_edit.pt:24
+#: eportfolio/views/templates/meta_competences.pt:11
+msgid "meta_competence"
+msgstr ""
+
+#. Default: Description
+#. Default: Task
+#. Default: Desciption
+#: eportfolio/views/templates/competence_edit.pt:20
+#: eportfolio/views/templates/indicator_edit.pt:22
+#: eportfolio/views/templates/indicator_set_edit.pt:22
+#: eportfolio/views/templates/meta_competence_edit.pt:22
+#: eportfolio/views/templates/objective_edit.pt:22
+#: eportfolio/views/templates/objectives.pt:27
+#: eportfolio/views/templates/objectives_pdf.pt:41
+#: eportfolio/views/templates/project_edit.pt:30
+#: eportfolio/views/templates/projects.pt:48
+#: eportfolio/views/templates/projects.pt:21
+#: eportfolio/views/templates/student_projects.pt:88
+#: eportfolio/views/templates/student_projects.pt:43
+msgid "description"
+msgstr ""
+
+#. Default: Title
+#: eportfolio/views/templates/competence_edit.pt:16
+#: eportfolio/views/templates/indicator_set_edit.pt:18
+#: eportfolio/views/templates/meta_competence_edit.pt:18
+#: eportfolio/views/templates/meta_competences.pt:19
+#: eportfolio/views/templates/objective_edit.pt:18
+#: eportfolio/views/templates/objectives.pt:26
+#: eportfolio/views/templates/objectives_pdf.pt:40
+#: eportfolio/views/templates/project_edit.pt:18
+#: eportfolio/views/templates/student_projects.pt:87
+msgid "title"
+msgstr ""
+
+#. Default: Edit
+#: eportfolio/views/templates/competence_edit.pt:11
+#: eportfolio/views/templates/competences.pt:60
+#: eportfolio/views/templates/competences.pt:49
+#: eportfolio/views/templates/competences.pt:36
+#: eportfolio/views/templates/indicator_edit.pt:13
+#: eportfolio/views/templates/indicator_set_edit.pt:13
+#: eportfolio/views/templates/journal_entries.pt:16
+#: eportfolio/views/templates/members.pt:66
+#: eportfolio/views/templates/members.pt:34
+#: eportfolio/views/templates/meta_competence_edit.pt:13
+#: eportfolio/views/templates/meta_competences.pt:28
+#: eportfolio/views/templates/objective_edit.pt:13
+#: eportfolio/views/templates/objectives.pt:43
+#: eportfolio/views/templates/project_edit.pt:13
+#: eportfolio/views/templates/projects.pt:60
+#: eportfolio/views/templates/projects.pt:36
+#: eportfolio/views/templates/teacher_edit.pt:13
+#: eportfolio/views/templates/users.pt:73 eportfolio/views/templates/users.pt:39
+msgid "edit"
+msgstr ""
+
+#. Default: Add New Competence
+#. Default: Add new competence
+#: eportfolio/views/templates/competence_edit.pt:10
+#: eportfolio/views/templates/competences.pt:19
+msgid "add_new_competence"
+msgstr ""
+
+#. Default: Meta-competences
+#. Default: Meta-Kompetenzen
+#: eportfolio/views/templates/competences.pt:79
+#: eportfolio/views/templates/competences.pt:75
+msgid "meta_competences"
+msgstr ""
+
+#. Default: Meta-Competences are higher-order abilities. Go to the meta competence
+#. overview page:
+#: eportfolio/views/templates/competences.pt:77
+msgid "meta_competences_help"
+msgstr ""
+
+#. Default: Down
+#: eportfolio/views/templates/competences.pt:63
+#: eportfolio/views/templates/competences.pt:52
+#: eportfolio/views/templates/competences.pt:39
+#: eportfolio/views/templates/objectives.pt:46
+msgid "down"
+msgstr ""
+
+#. Default: Up
+#: eportfolio/views/templates/competences.pt:62
+#: eportfolio/views/templates/competences.pt:51
+#: eportfolio/views/templates/competences.pt:38
+#: eportfolio/views/templates/objectives.pt:45
+msgid "up"
+msgstr ""
+
+#. Default: Add indicator
+#: eportfolio/views/templates/competences.pt:48
+msgid "add_indicator"
+msgstr ""
+
+#. Default: Add indicator set
+#: eportfolio/views/templates/competences.pt:35
+msgid "add_indicator_set"
+msgstr ""
+
+#. Default: Indicator
+#: eportfolio/views/templates/competences.pt:27
+#: eportfolio/views/templates/student_stats.pt:42
+msgid "indicator"
+msgstr ""
+
+#. Default: Indicator Set
+#. Default: Indicator set
+#: eportfolio/views/templates/competences.pt:26
+#: eportfolio/views/templates/student_stats.pt:41
+msgid "indicator_set"
+msgstr ""
+
+#. Default: Competence
+#: eportfolio/views/templates/competences.pt:24
+#: eportfolio/views/templates/student_stats.pt:40
+msgid "competence"
+msgstr ""
+
+#. Default: Competences
+#: eportfolio/views/templates/competences.pt:17
+#: eportfolio/views/templates/dashboard.pt:61
+#: eportfolio/views/templates/objective_edit.pt:26
+#: eportfolio/views/templates/objectives.pt:28
+#: eportfolio/views/templates/objectives_pdf.pt:42
+#: eportfolio/views/templates/student_stats.pt:28
+msgid "competences"
+msgstr ""
+
+#. Default: Projects
+#: eportfolio/views/templates/dashboard.pt:49
+#: eportfolio/views/templates/projects.pt:11
+#: eportfolio/views/templates/student_application.pt:53
+#: eportfolio/views/templates/student_projects.pt:27
+msgid "projects"
+msgstr ""
+
+#. Default: Dashboard
+#: eportfolio/views/templates/dashboard.pt:44
+msgid "dashboard"
+msgstr ""
+
+#. Default: Open your new project from the and go to the "Members" tab to assign
+#. users (students, teachers) to the project
+#: eportfolio/views/templates/dashboard.pt:39
+msgid "step_4_text"
+msgstr ""
+
+#. Default: 4. Assign Users to your Project
+#: eportfolio/views/templates/dashboard.pt:36
+msgid "step_4"
+msgstr ""
+
+#. Default: Go to the and add a new project.
+#: eportfolio/views/templates/dashboard.pt:32
+msgid "step_3_text"
+msgstr ""
+
+#. Default: 3. Add your Project
+#: eportfolio/views/templates/dashboard.pt:29
+msgid "step_3"
+msgstr ""
+
+#. Default: Go to the and add teachers and students.
+#: eportfolio/views/templates/dashboard.pt:25
+msgid "step_2_text"
+msgstr ""
+
+#. Default: 2. Add Users
+#: eportfolio/views/templates/dashboard.pt:22
+msgid "step_2"
+msgstr ""
+
+#. Default: Go to the and add the competences (incl. meta-competences).
+#: eportfolio/views/templates/dashboard.pt:18
+msgid "step_1_text"
+msgstr ""
+
+#. Default: 1. Add Competences
+#: eportfolio/views/templates/dashboard.pt:15
+msgid "step_1"
+msgstr ""
+
+#. Default: Next Steps
+#: eportfolio/views/templates/dashboard.pt:11
+msgid "next_steps"
+msgstr ""
+
+#. Default: Go back
+#: eportfolio/views/templates/forbidden.pt:12
+msgid "go_back"
+msgstr ""
+
+#. Default: You are not authorized to access this resource
+#: eportfolio/views/templates/forbidden.pt:11
+msgid "not_authorized_to_access_this_resource"
+msgstr ""
+
+#. Default: Add New Indicator
+#: eportfolio/views/templates/indicator_edit.pt:12
+msgid "add_new_indicator"
+msgstr ""
+
+#. Default: Add New Indicator
+#: eportfolio/views/templates/indicator_set_edit.pt:12
+msgid "add_new_indicator_set"
+msgstr ""
+
+#. Default: Add entry
+#: eportfolio/views/templates/journal_add.pt:103
+msgid "add_entry"
+msgstr ""
+
+#. Default: Replace the image
+#: eportfolio/views/templates/journal_add.pt:91
+msgid "replace-image"
+msgstr ""
+
+#. Default: Delete the image
+#: eportfolio/views/templates/journal_add.pt:87
+msgid "delete-image"
+msgstr ""
+
+#. Default: Keep the image
+#: eportfolio/views/templates/journal_add.pt:83
+msgid "keep-image"
+msgstr ""
+
+#. Default: Image
+#: eportfolio/views/templates/journal_add.pt:74
+msgid "image"
+msgstr ""
+
+#. Default: Indicators
+#. Default: Indicators:
+#: eportfolio/views/templates/journal_add.pt:55
+#: eportfolio/views/templates/project_indicators.pt:32
+#: eportfolio/views/templates/project_indicators.pt:14
+msgid "indicators"
+msgstr ""
+
+#. Default: Text
+#: eportfolio/views/templates/journal_add.pt:47
+msgid "text"
+msgstr ""
+
+#. Default: Edit Journal Entry
+#: eportfolio/views/templates/journal_add.pt:41
+msgid "edit_journal_entry"
+msgstr ""
+
+#. Default: Add New Journal Entry for
+#: eportfolio/views/templates/journal_add.pt:40
+msgid "add_new_journal_entry_for"
+msgstr ""
+
+#. Default: Add Journal Entry
+#: eportfolio/views/templates/journal_entries.pt:3
+msgid "add_journal_entry"
+msgstr ""
+
+#. Default: &raquo; Retrieve Password
+#: eportfolio/views/templates/login.pt:45
+msgid "forgot_password"
+msgstr ""
+
+#. Default: Password
+#: eportfolio/views/templates/login.pt:40
+msgid "passwsord"
+msgstr ""
+
+#. Default: Username (E-Mail)
+#: eportfolio/views/templates/login.pt:36
+#: eportfolio/views/templates/password_reset.pt:32
+#: eportfolio/views/templates/password_retrieve.pt:38
+msgid "username"
+msgstr ""
+
+#. Default: Login
+#. Default: eportfolio Login
+#: eportfolio/views/templates/login.pt:33 eportfolio/views/templates/login.pt:16
+#: eportfolio/views/templates/password_retrieve.pt:35
+msgid "login"
+msgstr ""
+
+#. Default: Login Failed.
+#: eportfolio/views/templates/login.pt:18
+msgid "login_failed"
+msgstr ""
+
+#. Default: logout
+#: eportfolio/views/templates/master.pt:177
+msgid "logout"
+msgstr ""
+
+#. Default: email
+#. Default: Email
+#. Default: E-mail
+#: eportfolio/views/templates/members.pt:67
+#: eportfolio/views/templates/members.pt:35
+#: eportfolio/views/templates/student_edit.pt:25
+#: eportfolio/views/templates/teacher_edit.pt:25
+#: eportfolio/views/templates/users.pt:66 eportfolio/views/templates/users.pt:55
+#: eportfolio/views/templates/users.pt:31 eportfolio/views/templates/users.pt:20
+msgid "email"
+msgstr ""
+
+#. Default: Name
+#: eportfolio/views/templates/members.pt:59
+#: eportfolio/views/templates/members.pt:27
+#: eportfolio/views/templates/projects.pt:47
+#: eportfolio/views/templates/projects.pt:20
+#: eportfolio/views/templates/student_application.pt:26
+#: eportfolio/views/templates/student_application_pdf.pt:37
+#: eportfolio/views/templates/users.pt:54 eportfolio/views/templates/users.pt:19
+msgid "name"
+msgstr ""
+
+#. Default: Add teacher
+#: eportfolio/views/templates/members.pt:53 eportfolio/views/templates/users.pt:49
+msgid "add_teacher"
+msgstr ""
+
+#. Default: Select teacher
+#: eportfolio/views/templates/members.pt:49
+msgid "select_teacher"
+msgstr ""
+
+#. Default: Project Teachers
+#: eportfolio/views/templates/members.pt:44
+msgid "project_teachers"
+msgstr ""
+
+#. Default: Add Student
+#. Default: Add student
+#: eportfolio/views/templates/members.pt:21 eportfolio/views/templates/users.pt:14
+msgid "add_student"
+msgstr ""
+
+#. Default: Select student
+#: eportfolio/views/templates/members.pt:17
+msgid "select_student"
+msgstr ""
+
+#. Default: Add New Meta Competence
+#: eportfolio/views/templates/meta_competence_edit.pt:12
+msgid "add_new_meta_competence"
+msgstr ""
+
+#. Default: Add Meta Competence
+#: eportfolio/views/templates/meta_competences.pt:14
+msgid "add_meta_competence"
+msgstr ""
+
+#. Default: Add New Objective
+#: eportfolio/views/templates/objective_edit.pt:12
+msgid "add_new_objective"
+msgstr ""
+
+#. Default: Print Objectives
+#: eportfolio/views/templates/objectives.pt:53
+msgid "print_objectives"
+msgstr ""
+
+#. Default: Add Objective
+#: eportfolio/views/templates/objectives.pt:20
+msgid "add_objective"
+msgstr ""
+
+#. Default: Objectives
+#: eportfolio/views/templates/objectives.pt:17
+#: eportfolio/views/templates/objectives_pdf.pt:29
+#: eportfolio/views/templates/student_projects.pt:83
+msgid "objectives"
+msgstr ""
+
+#. Default: New Password
+#: eportfolio/views/templates/password_reset.pt:36
+msgid "new_password"
+msgstr ""
+
+#. Default: Reset Password
+#. Default: eportfolio Reset Password
+#: eportfolio/views/templates/password_reset.pt:29
+#: eportfolio/views/templates/password_reset.pt:16
+msgid "reset_password"
+msgstr ""
+
+#. Default: Send
+#: eportfolio/views/templates/password_retrieve.pt:47
+msgid "send"
+msgstr ""
+
+#. Default: For security reasons, we store your password encrypted, and cannot mail
+#. it to you. If you would like to reset your password, fill out the form below and
+#. we will send you an email to start the process of resetting your password. If
+#. this will not work for you (for example, if your email address has changed) send
+#. an email to info@seantis.ch.
+#: eportfolio/views/templates/password_retrieve.pt:29
+msgid "password_retrieve_instructions"
+msgstr ""
+
+#. Default: eportfolio Retrieve Password
+#: eportfolio/views/templates/password_retrieve.pt:16
+msgid "retrive_password"
+msgstr ""
+
+#. Default: Recent activity
+#: eportfolio/views/templates/project.pt:25
+#: eportfolio/views/templates/student.pt:20
+msgid "recent_activity"
+msgstr ""
+
+#. Default: Stats
+#: eportfolio/views/templates/project.pt:19
+#: eportfolio/views/templates/project_indicators.pt:15
+#: eportfolio/views/templates/student_application.pt:14
+#: eportfolio/views/templates/student_projects.pt:19
+msgid "stats"
+msgstr ""
+
+#. Default: Indicators (Admin only)
+#: eportfolio/views/templates/project.pt:18
+#: eportfolio/views/templates/student_projects.pt:18
+msgid "indicators_admin_only"
+msgstr ""
+
+#. Default: Members (Admin only)
+#: eportfolio/views/templates/project.pt:17
+#: eportfolio/views/templates/student_projects.pt:17
+msgid "members_admin_only"
+msgstr ""
+
+#. Default: Activity
+#: eportfolio/views/templates/project.pt:16
+#: eportfolio/views/templates/project_indicators.pt:12
+#: eportfolio/views/templates/student_application.pt:11
+#: eportfolio/views/templates/student_projects.pt:16
+msgid "activity"
+msgstr ""
+
+#. Default: Exclusions
+#: eportfolio/views/templates/project_edit.pt:65
+#: eportfolio/views/templates/student_projects.pt:78
+msgid "exclusions"
+msgstr ""
+
+#. Default: Environment
+#: eportfolio/views/templates/project_edit.pt:61
+#: eportfolio/views/templates/student_projects.pt:74
+msgid "environment"
+msgstr ""
+
+#. Default: Preconditions
+#: eportfolio/views/templates/project_edit.pt:57
+#: eportfolio/views/templates/student_projects.pt:70
+msgid "preconditions"
+msgstr ""
+
+#. Default: Budget
+#: eportfolio/views/templates/project_edit.pt:50
+msgid "budget"
+msgstr ""
+
+#. Default: Risks
+#: eportfolio/views/templates/project_edit.pt:46
+#: eportfolio/views/templates/student_projects.pt:59
+msgid "risks"
+msgstr ""
+
+#. Default: Customer Outcome
+#: eportfolio/views/templates/project_edit.pt:42
+#: eportfolio/views/templates/student_projects.pt:55
+msgid "customer_outcome"
+msgstr ""
+
+#. Default: Customer Benefit
+#: eportfolio/views/templates/project_edit.pt:38
+#: eportfolio/views/templates/student_projects.pt:51
+msgid "customer_benefit"
+msgstr ""
+
+#. Default: Customer Request
+#: eportfolio/views/templates/project_edit.pt:34
+#: eportfolio/views/templates/student_projects.pt:47
+msgid "customer_request"
+msgstr ""
+
+#. Default: Number
+#: eportfolio/views/templates/project_edit.pt:26
+#: eportfolio/views/templates/projects.pt:49
+#: eportfolio/views/templates/projects.pt:22
+#: eportfolio/views/templates/student_projects.pt:39
+msgid "number"
+msgstr ""
+
+#. Default: End Date
+#: eportfolio/views/templates/project_edit.pt:24
+#: eportfolio/views/templates/student_projects.pt:37
+msgid "end_date"
+msgstr ""
+
+#. Default: Start Date
+#: eportfolio/views/templates/project_edit.pt:22
+#: eportfolio/views/templates/student_projects.pt:35
+msgid "start_date"
+msgstr ""
+
+#. Default: Add New Project
+#. Default: Add new Project
+#: eportfolio/views/templates/project_edit.pt:12
+#: eportfolio/views/templates/projects.pt:13
+msgid "add_new_project"
+msgstr ""
+
+#. Default: Select indicator
+#: eportfolio/views/templates/project_indicators.pt:25
+msgid "select_indicator"
+msgstr ""
+
+#. Default: Project Indicators
+#: eportfolio/views/templates/project_indicators.pt:21
+msgid "project_indicators"
+msgstr ""
+
+#. Default: Members
+#: eportfolio/views/templates/project_indicators.pt:13
+msgid "members"
+msgstr ""
+
+#. Default: Date
+#: eportfolio/views/templates/projects.pt:50
+#: eportfolio/views/templates/projects.pt:23
+#: eportfolio/views/templates/student_application_pdf.pt:83
+msgid "date"
+msgstr ""
+
+#. Default: Past Projects
+#: eportfolio/views/templates/projects.pt:43
+msgid "past_projects"
+msgstr ""
+
+#. Default: No current projects
+#: eportfolio/views/templates/projects.pt:27
+msgid "no_current_projects"
+msgstr ""
+
+#. Default: Current Projects
+#: eportfolio/views/templates/projects.pt:16
+msgid "current_projects"
+msgstr ""
+
+#. Default: No projects! Ask your Teacher to assign you to an active project.
+#: eportfolio/views/templates/student.pt:16
+#: eportfolio/views/templates/student_application.pt:55
+#: eportfolio/views/templates/student_projects.pt:25
+msgid "no_assigned_project"
+msgstr ""
+
+#. Default: Generate PDF
+#: eportfolio/views/templates/student_application.pt:94
+msgid "generate_pdf"
+msgstr ""
+
+#. Default: Show Journal
+#: eportfolio/views/templates/student_application.pt:92
+msgid "show journal"
+msgstr ""
+
+#. Default: Show Projects
+#: eportfolio/views/templates/student_application.pt:90
+msgid "show_projects"
+msgstr ""
+
+#. Default: Export Options
+#: eportfolio/views/templates/student_application.pt:87
+msgid "export_options"
+msgstr ""
+
+#. Default: Gained Competences
+#: eportfolio/views/templates/student_application.pt:68
+#: eportfolio/views/templates/student_application_pdf.pt:91
+msgid "gained_competences"
+msgstr ""
+
+#. Default: Hobbies
+#: eportfolio/views/templates/student_application.pt:48
+#: eportfolio/views/templates/student_application_pdf.pt:60
+#: eportfolio/views/templates/student_edit.pt:64
+msgid "hobbies"
+msgstr ""
+
+#. Default: Interests
+#: eportfolio/views/templates/student_application.pt:44
+#: eportfolio/views/templates/student_application_pdf.pt:56
+#: eportfolio/views/templates/student_edit.pt:56
+msgid "interests"
+msgstr ""
+
+#. Default: Experiences
+#: eportfolio/views/templates/student_application.pt:40
+#: eportfolio/views/templates/student_application_pdf.pt:52
+#: eportfolio/views/templates/student_edit.pt:60
+msgid "experiences"
+msgstr ""
+
+#. Default: Experiences, Interests
+#: eportfolio/views/templates/student_application.pt:37
+#: eportfolio/views/templates/student_application_pdf.pt:48
+msgid "experiences_interests"
+msgstr ""
+
+#. Default: Languages
+#: eportfolio/views/templates/student_application.pt:32
+#: eportfolio/views/templates/student_application_pdf.pt:43
+#: eportfolio/views/templates/student_edit.pt:52
+msgid "languages"
+msgstr ""
+
+#. Default: Date of Birth
+#: eportfolio/views/templates/student_application.pt:28
+#: eportfolio/views/templates/student_application_pdf.pt:39
+#: eportfolio/views/templates/student_edit.pt:50
+msgid "date_of_birth"
+msgstr ""
+
+#. Default: Personal Data
+#: eportfolio/views/templates/student_application.pt:22
+#: eportfolio/views/templates/student_application_pdf.pt:33
+msgid "personal_data"
+msgstr ""
+
+#. Default: Job Application
+#: eportfolio/views/templates/student_application.pt:20
+msgid "job_application_of"
+msgstr ""
+
+#. Default: Job Application
+#: eportfolio/views/templates/student_application.pt:13
+msgid "job_application"
+msgstr ""
+
+#. Default: Profile
+#: eportfolio/views/templates/student_application.pt:12
+msgid "profile"
+msgstr ""
+
+#. Default: Journal
+#: eportfolio/views/templates/student_application_pdf.pt:112
+msgid "journal"
+msgstr ""
+
+#. Default: Task
+#: eportfolio/views/templates/student_application_pdf.pt:87
+msgid "task"
+msgstr ""
+
+#. Default: Projects at School
+#: eportfolio/views/templates/student_application_pdf.pt:67
+msgid "projects_at_school"
+msgstr ""
+
+#. Default: Resumé -
+#: eportfolio/views/templates/student_application_pdf.pt:29
+msgid "resume"
+msgstr ""
+
+#. Default: Portrait
+#: eportfolio/views/templates/student_edit.pt:37
+#: eportfolio/views/templates/teacher_edit.pt:36
+msgid "portrait"
+msgstr ""
+
+#. Default: You dont need to enter a password here. If you do enter one then no
+#. activation email is sent to the user.
+#. Default: You don't need to enter a password here. If you do enter one then no
+#. activation email is sent to the user.
+#: eportfolio/views/templates/student_edit.pt:31
+#: eportfolio/views/templates/teacher_edit.pt:31
+msgid "password_activation_email"
+msgstr ""
+
+#. Default: Password
+#: eportfolio/views/templates/student_edit.pt:27
+#: eportfolio/views/templates/teacher_edit.pt:27
+msgid "password"
+msgstr ""
+
+#. Default: Last Name
+#: eportfolio/views/templates/student_edit.pt:21
+#: eportfolio/views/templates/teacher_edit.pt:21
+msgid "last_name"
+msgstr ""
+
+#. Default: First Name
+#: eportfolio/views/templates/student_edit.pt:19
+#: eportfolio/views/templates/teacher_edit.pt:19
+msgid "first_name"
+msgstr ""
+
+#. Default: Profile of
+#: eportfolio/views/templates/student_edit.pt:13
+msgid "profile_of"
+msgstr ""
+
+#. Default: Add New Student
+#: eportfolio/views/templates/student_edit.pt:12
+msgid "add_new_student"
+msgstr ""
+
+#. Default: Budget
+#: eportfolio/views/templates/student_projects.pt:63
+msgid "bugdet"
+msgstr ""
+
+#. Default: Add New Teacher
+#: eportfolio/views/templates/teacher_edit.pt:12
+msgid "add_new_teacher"
+msgstr ""
+
+#. Default: Project
+#: eportfolio/views/templates/users.pt:57 eportfolio/views/templates/users.pt:22
+msgid "project"
+msgstr ""
+
+#. Default: Teachers
+#: eportfolio/views/templates/users.pt:46
+msgid "teachers"
+msgstr ""
+
+#. Default: Students
+#: eportfolio/views/templates/users.pt:11
+msgid "students"
+msgstr ""
+

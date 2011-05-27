@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block metal:fill-slot="head">
+
+    <!--[if IE]>
+        <script language="javascript" type="text/javascript" src="${api.static_url('js/excanvas.min.js')}"></script>
+    <![endif]-->
+    
+    <script type="text/javascript" src="${api.static_url('js/jquery.flot.min.js')}"></script>
+    <script type="text/javascript" src="${api.static_url('js/jquery.flot.stack.min.js')}"></script>
+    
+    <script type="text/javascript">
+        var graph_axis = ${graph_axis};
+        var graph_data = ${graph_data};
+    </script>
+    
+    <script type="text/javascript" src="${api.static_url('js/stats.js')}"></script>
+</tal:block>
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1><tal:block i18n:translate="competences">Competences</tal:block> - ${context.first_name} ${context.last_name}</h1>
+    
+    <div style="padding-left: 20px;">
+        <div id="placeholder" style="width:940px;height:200px; margin: 20px 0"></div>
+    </div>
+    
+    <div tal:repeat="project projects">
+        
+        <h2>${project['title']}</h2>
+        
+        <table class="listing-table">
+            <tr>
+                <th i18n:translate="competence">Competence</th>
+                <th i18n:translate="indicator_set">Indicator set</th>
+                <th i18n:translate="indicator">Indicator</th>
+            </tr>
+            <tal:block tal:repeat="competence project['competences']">
+            <tr tal:repeat="indicator_set competence['indicator_sets']"
+                tal:attributes="class repeat['indicator_set'].odd() and 'even' or 'odd'">
+                <th tal:condition="repeat['indicator_set'].start" 
+                    tal:attributes="rowspan len(competence['indicator_sets'])">
+                    <span tal:attributes="class competence['achieved'] and 'achieved' or 'achievable'">${competence['title']}</span>
+                </th>
+                <td>
+                    <span tal:attributes="class indicator_set['achieved'] and 'achieved' or 'achievable'">
+                        ${indicator_set['title']}
+                    </span>
+                </td>
+                <td>
+                    <ul>
+                        <li tal:repeat="indicator indicator_set['indicators']">
+                            <span tal:attributes="class indicator['achieved'] and 'achieved' or 'achievable'">
+                                ${indicator.title}
+                            </span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tal:block>
+        </table>
+        
+    </div>
+    
+    <hr />
+
+
+</div>
+</html>

@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content">
+   
+    <h1 tal:condition="add_form" i18n:translate="add_new_competence">Add New Competence</h1>
+    <h1 tal:condition="not add_form"><tal:block i18n:translate="edit">Edit</tal:block> ${competence.title}</h1>
+    
+    <form action="" method="post">
+        <table class="form-table">
+            <tr class="odd">
+                <th><label for="title" i18n:translate="title">Title</label></th>
+                <td><input id="title" type="text" name="title" /><br /><form:error name="title"/></td>
+            </tr>
+            <tr>
+                <th><label for="description" i18n:translate="description">Description</label></th>
+                <td><textarea id="description" rows="5" cols="75" name="description"></textarea><br /><form:error name="description"/></td>
+            </tr>
+            <tr>
+                <th><label for="type" i18n:translate="meta_competence">Meta competence</label></th>
+                <td>
+                    <select name="meta_competence_id">
+                        <option value="" selected="selected" i18n:translate="select_meta_competence">Select meta competence</option> 
+                        <option tal:repeat="meta_competence meta_competences" value="${meta_competence.id}">${meta_competence.title}</option> 
+                    </select><br />
+                    <form:error name="meta_competence_id"/>
+                    <form:error name="type"/>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="form-controls">
+            <button type="submit" class="add" name="form.submitted" i18n:translate="save" value="Save">Save</button>
+            <button type="submit" class="cancel" name="form.cancel" i18n:translate="cancel" value="Cancel">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
+</html>

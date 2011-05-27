@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<div id="navigation" metal:fill-slot="navigation">
+    <ul id="menu">
+        <li><a href=""><span i18n:translate="activity">Activity</span></a></li>
+        <li><a href="members.html"><span i18n:translate="members">Members</span></a></li>
+        <li><a class="current" href="indicators.html"><span i18n:translate="indicators">Indicators</span></a></li>
+        <li><a href=""><span i18n:translate="stats">Stats</span></a></li>
+    </ul>
+</div>
+
+<div metal:fill-slot="content">
+    
+    <h1 i18n:translate="project_indicators">Project Indicators</h1>
+    
+    <form action="" method="post">
+        <select name="indicator_id">
+            <option value="" selected="selected" i18n:translate="select_indicator">Select indicator</option> 
+            <option tal:repeat="indicator all_indicators" value="${indicator.id}">${indicator.title}</option> 
+        </select><br />
+        <form:error name="indicator_id"/>
+        <input type="submit" class="medium-button" name="form.submitted" value="Add indicator"/>
+    </form>
+    
+    <h2 i18n:translate="indicators">Indicators:</h2>
+    
+    <ul>
+        <li tal:repeat="indicator indicators">
+            ${indicator.title}
+        </li>
+    </ul>
+
+</div>
+</html>

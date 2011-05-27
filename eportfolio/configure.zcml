@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.repoze.org/bfg">
+
+  <!-- this must be included for the view declarations to work -->
+  <include package="repoze.bfg.includes" />
+  
+  <include package=".security" />
+  <include package=".views" />
+  <include package=".utilities" />
+  
+  <localenegotiator negotiator=".locale_negotiator.locale_negotiator" />
+  
+  <translationdir dir="eportfolio:locale/" />
+
+</configure>

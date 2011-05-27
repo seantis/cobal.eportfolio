@@ -1,0 +1,14 @@
+<tal:block >
+<div id="navigation">
+    <ul id="menu" tal:condition="entries">
+        <li tal:repeat="entry entries">
+            <a class="${entry.active and 'current' or ''}" href="${entry.url}"><span>${entry.title}</span></a>
+        </li>        
+    </ul>
+    
+    <div tal:condition="not entries">
+        <!-- Place holder if we have no menu here -->
+        <ul id="menu"></ul>
+    </div>
+</div>
+</tal:block>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE document SYSTEM "http://www.reportlab.com/docs/rml.dtd">
+<document filename="objectives.pdf"
+          xmlns:tal="http://xml.zope.org/namespaces/tal"
+	      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	      i18n:domain="eportfolio">
+
+
+    <template pageSize="A4" author="www.seantis.ch" title="">
+        <pageTemplate id="main">
+           <frame id="first" x1="72" y1="12" width="451" height="760"/>           
+        </pageTemplate>
+    </template>
+    
+    <stylesheet>
+        <paraStyle name="tableHeader" fontSize="6" alignment="center" />
+        <paraStyle name="tableHeaderSmall" fontSize="4" alignment="center" />
+        <paraStyle name="footer" fontSize="9" alignment="center" />
+        <paraStyle name="normal" fontSize="10" />
+        <paraStyle name="small" fontSize="7.5" />
+        <blockTableStyle id="default">
+            <blockLeftPadding length="1mm" />
+            <blockRightPadding length="1mm" />
+        </blockTableStyle>
+    </stylesheet>
+
+    <story>
+        
+        <h1><tal:block i18n:translate="objectives">Objectives</tal:block> - ${project.title}</h1>        
+        <spacer length="20"/>
+        
+        <blockTable style="default"  colWidths="50% 50%">
+            
+            <blockTableStyle id="">
+                <lineStyle kind="LINEABOVE" colorName="black" start="0,0" stop="-1,0" thickness="0.25"/>
+                <lineStyle kind="LINEBELOW" colorName="black" start="0,0" stop="-1,0" thickness="0.25"/>
+            </blockTableStyle>
+            
+            <tr>
+                <td i18n:translate="title">Title</td>
+                <td i18n:translate="description">Description</td>
+                <td i18n:translate="competences">Competences</td>
+            </tr>
+            
+            <tr tal:repeat="objective project['objectives']">
+                <td vAlign="top">
+                    <para>${objective.title}</para>
+                </td>
+                <td vAlign="top">
+                    <para tal:content="structure api.filter_html(objective.description)"></para> 
+                </td>
+                <td vAlign="top">
+                    <para tal:repeat="competence objective.competences">
+                        ${competence.title}
+                    </para>
+                </td>
+            </tr>
+        </blockTable>
+        
+    </story>
+
+</document>

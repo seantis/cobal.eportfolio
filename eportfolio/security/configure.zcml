@@ -1,0 +1,20 @@
+<configure xmlns="http://namespaces.repoze.org/bfg">
+    
+  <repozewho1authenticationpolicy
+    callback=".groupfinder"
+    />
+    
+  <aclauthorizationpolicy />
+    
+  <adapter factory=".app.ApplicationPermissions" />
+  <adapter factory=".user.UserPermissions" />
+  <adapter factory=".student.StudentPermissions" />
+  <adapter factory=".meta_competence.MetaCompetencePermissions" />
+  <adapter factory=".competences.CompetencesContainerPermissions" />
+  <adapter factory=".competence.CompetencePermissions" />
+  <adapter factory=".project.ProjectPermissions" />
+  <adapter factory=".journal.JournalEntryPermissions" />
+  <adapter factory=".comment.CommentPermissions" /> 
+  <adapter factory=".file.FilePermissions" />
+    
+</configure>

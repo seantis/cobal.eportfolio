@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block id="head" metal:fill-slot="head">
+    <script type="text/javascript" src="${api.static_url('js/comments.js')}"></script>
+</tal:block>
+
+<div metal:fill-slot="content">
+                      
+    <div class="notice" tal:condition="not context.projects.first()" i18n:translate="no_assigned_project">No projects! Ask your Teacher to assign you to an active project.</div>    
+        
+    <div tal:repeat="project context['projects']">
+        
+        <h1><tal:block i18n:translate="recent_activity">Recent activity</tal:block> - ${project.title}</h1>
+        
+        <tal:block metal:use-macro="api.journal_entries.macros['entries']" />
+        
+    </div>
+    
+</div>
+
+<div id="right-column" metal:fill-slot="right-column">
+    <div id="tag-cloud" tal:replace="structure competence_cloud" />
+</div>
+
+</html>

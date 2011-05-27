@@ -1,0 +1,17 @@
+<tal:block xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio">
+
+<div id="tag-cloud">
+    <h1 i18n:translate="cloud">Cloud</h1>
+    <span tal:repeat="e entries"
+           tal:attributes="class e['class']">
+      <span class="tipTip" title=""
+         tal:attributes="title string: ${e['count']};"
+         tal:content="e['name']">NAME</span> 
+    </span>
+</div>
+
+</tal:block>

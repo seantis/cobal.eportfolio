@@ -1,0 +1,19 @@
+<configure xmlns="http://namespaces.repoze.org/bfg">
+        
+    <!-- Mail delivery -->
+    
+    <utility
+      provides="repoze.sendmail.interfaces.IMailer"
+      component=".mail_delivery.mailer"
+      />
+        
+    <utility
+      provides="repoze.sendmail.interfaces.IMailDelivery"
+      component=".mail_delivery.queued_mail_delivery"
+      />
+      
+    <utility
+      provides="eportfolio.interfaces.IMailService"
+      factory=".mail.MailService"
+      />
+</configure>

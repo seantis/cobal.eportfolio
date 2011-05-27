@@ -1,0 +1,43 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+	 xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="eportfolio"
+     class="comments_container" id="${api.model_url(context)}">
+
+    <div class="add-comment" tal:condition="api.authenticated_user()">
+        <a href="#" i18n:translate="comment">&raquo; Comment</a>
+    </div>
+
+    <div class="comment-panel" style="display: none">
+        <form action="" method="post">
+            <textarea class="comment_text" name="comment_text"></textarea><br />
+            <div class="small-button">
+                <button type="submit" class="add add_comment" name="form.submitted" value="Add comment" i18n:translate="add_comment">Add Comment</button>
+            </div>
+        
+        </form>
+    </div>
+
+    <div class="discreet show-all">
+        <b>${number} <tal:block i18n:translate="comments"></tal:block></b>
+        <!-- <a href="#">&raquo; Show all</a> -->
+    </div>
+    
+    <div class="container" id="${api.model_url(context).rstrip('/')}">
+        <div class="item comment" tal:repeat="comment context" id="${str(comment.id)}">
+            <div class="discreet date"><tal:block i18n:translate="posted_by">Posted by</tal:block>
+                <span class="author">
+                    <span tal:attributes="class python: api.has_permission('remove', comment) and 'mine' or ''">${comment.user.first_name} ${comment.user.last_name}</span>
+                </span>
+                <tal:block i18n:translate="on">on</tal:block> ${comment.date.strftime('%d.%m.%Y %H:%M')} 
+                <button tal:condition="python: api.has_permission('remove', comment)" class="remove" i18n:translate="remove">Remove</button>
+            </div>
+            <div class="commentText"><p>${comment.text}</p></div>
+            <!-- <div class="discreet commentManagement" tal:condition="python: comment.user == api.authenticated_user()">
+                <a href="#" i18n:translate="edit">edit</a> | <a href="#" i18n:translate="delete">delete</a>
+            </div>    -->
+        </div>
+        <div class="visual-clear"></div>
+    </div>
+
+</div>

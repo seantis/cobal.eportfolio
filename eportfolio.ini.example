@@ -1,0 +1,68 @@
+[DEFAULT]
+debug = true
+
+[loggers]
+keys = root, eportfolio
+
+[handlers]
+keys = console
+
+[formatters]
+keys = 
+
+[logger_root]
+level = ERROR
+handlers = console
+
+[logger_eportfolio]
+level = DEBUG
+propagate = 0
+handlers = console
+qualname = eportfolio
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+
+[app:eportfolio]
+use = egg:eportfolio#app
+reload_templates = true
+debug_authorization = false
+debug_notfound = false
+db_string = sqlite:///%(here)s/eportfolio.db
+available_languages = de en
+default_locale_name = en
+
+upload_directory = %(here)s/uploads
+
+mail_hostname = mail.example.com
+mail_username = info@example.com
+mail_password = password
+mail_queue_path = %(here)s/maildir
+from_mail_address = eportfolio Administrator <mail.example.com>
+
+pw_reset_salt = secret
+
+[filter:who]
+use = egg:repoze.who#config
+config_file = %(here)s/who.ini
+#log_file = stdout
+#log_level = debug
+
+[filter:statusmessage]
+use = egg:qc.statusmessage#middleware
+cookie_name = eportfolio_msg
+
+[pipeline:main]
+pipeline =
+    egg:weberror#evalerror
+    egg:repoze.tm2#tm
+    egg:repoze.filesafe#filesafe
+    who
+    statusmessage
+    eportfolio
+
+[server:main]
+use = egg:Paste#http
+host = 0.0.0.0
+port = 6543

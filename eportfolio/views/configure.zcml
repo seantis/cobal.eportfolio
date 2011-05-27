@@ -1,0 +1,366 @@
+<configure xmlns="http://namespaces.repoze.org/bfg">
+    
+  <!-- Application (aka root) -->
+    
+  <view
+    context="eportfolio.interfaces.IApplication"
+    view=".application.application_view"
+    />
+    
+  <view
+    name="license.html"
+    context="eportfolio.interfaces.IApplication"
+    view=".license.license_view"
+    renderer="templates/license.pt"
+    />
+    
+  <view
+    name="login.html"
+    context="eportfolio.interfaces.IApplication"
+    view=".login.login_view"
+    renderer="templates/login.pt"
+    />
+    
+  <view
+    name="logged_in"
+    context="eportfolio.interfaces.IApplication"
+    view=".login.logged_in_view"
+    /> 
+    
+  <view
+    name="dashboard.html"
+    context="eportfolio.interfaces.IApplication"
+    view=".dashboard.dashboard_view"
+    renderer="templates/dashboard.pt"
+    />
+    
+  <forbidden
+    view=".application.forbidden_view" 
+    renderer="templates/forbidden.pt"
+    /> 
+    
+  <!-- Retrieve password -->
+  
+  <view
+    name="retrieve_password.html"
+    context="eportfolio.interfaces.IApplication"
+    view=".pw_reset.view_pw_reset"
+    renderer="templates/password_retrieve.pt"
+    />
+    
+  <view
+    name="reset_password.html"
+    context="eportfolio.interfaces.IApplication"
+    view=".pw_reset.view_pw_reset"
+    renderer="templates/password_reset.pt"
+    />
+    
+  <!-- Projects -->
+
+  <view
+    context="eportfolio.interfaces.IProjects"
+    view=".projects.projects_view"
+    renderer="templates/projects.pt"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.IProjects"
+    view=".project.project_edit_view"
+    permission="manage_projects"
+    />
+
+  <view
+    context="eportfolio.interfaces.IProject"
+    view=".project.project_view"
+    renderer="templates/project.pt"
+    permission="view"
+    />
+    
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IProject"
+    view=".project.project_edit_view"
+    permission="edit"
+    />
+    
+  <view
+    name="add_entry.html"
+    context="eportfolio.interfaces.IProject"
+    view=".journal.journal_add_view"
+    permission="add_journal_entry"
+    />
+    
+  <view
+    name="members.html"
+    context="eportfolio.interfaces.IProject"
+    view=".members.members_view"
+    renderer="templates/members.pt"
+    permission="manage_projects"
+    />
+    
+  <!-- Journal entries -->
+  
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IJournalEntry"
+    view=".journal.journal_add_view"
+    permission="edit"
+    />
+    
+  <!-- Objectives -->
+  
+  <view 
+    view=".objectives.objectives_view"
+    context="eportfolio.interfaces.IObjectives"
+    renderer="templates/objectives.pt"
+    permission="manage_projects"
+    /> 
+    
+  <view
+    name="pdf"
+    context="eportfolio.interfaces.IObjectives"
+    view=".objectives.objectives_pdf_view"
+    permission="manage_projects"
+  />
+    
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.IObjectives"
+    view=".objective.objective_edit_view"
+    permission="manage_projects"
+    />
+
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IObjective"
+    view=".objective.objective_edit_view"
+    permission="manage_projects"
+    />
+    
+  <!-- Comments -->
+  
+  <view
+    name="add"
+    context="eportfolio.interfaces.IComments"
+    view=".comments.comments_add_view"
+    />
+    
+  <!-- Competences -->
+  
+  <view
+    context="eportfolio.interfaces.ICompetences"
+    view=".competences.competences_view"
+    renderer="templates/competences.pt"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.ICompetences"
+    view=".competence.competence_edit_view"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.ICompetence"
+    view=".competence.competence_edit_view"
+    permission="manage_projects"
+    />
+    
+  <!-- Indicator sets -->
+  
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.IIndicatorSets"
+    view=".indicator_set.indicator_set_edit_view"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IIndicatorSet"
+    view=".indicator_set.indicator_set_edit_view"
+    permission="manage_projects"
+    />
+    
+  <!-- Indicators -->
+  
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.IIndicators"
+    view=".indicator.indicator_edit_view"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IIndicator"
+    view=".indicator.indicator_edit_view"
+    permission="manage_projects"
+    />
+    
+  <!-- Users -->
+  
+  <view
+    context="eportfolio.interfaces.IUsers"
+    view=".users.users_view"
+    renderer="templates/users.pt"
+    permission="manage_users"
+    />
+    
+  <!-- Students -->
+  
+  <view 
+    name="add_student.html"
+    context="eportfolio.interfaces.IUsers"
+    view=".student.student_edit_view"
+    permission="manage_users"
+    />
+    
+  <view
+    context="eportfolio.interfaces.IStudent"
+    view=".student.student_view"
+    renderer="templates/student.pt"
+    permission="view"
+    />
+    
+  <view 
+    name="edit.html"
+    context="eportfolio.interfaces.IStudent"
+    view=".student.student_edit_view"
+    permission="edit"
+    />
+    
+  <view 
+    name="application.html"
+    context="eportfolio.interfaces.IStudent"
+    view=".student.student_application_view"
+    renderer="templates/student_application.pt"
+    permission="view"
+    />
+    
+  <view
+    name="application.pdf"
+    context="eportfolio.interfaces.IStudent"
+    view=".student.student_application_pdf_view"
+    permission="view"
+    />
+    
+  <view
+    name="stats.html"
+    context="eportfolio.interfaces.IStudent"
+    view=".stats.student_stats_view"
+    renderer="templates/student_stats.pt"
+    permission="view"
+    /> 
+    
+  <view 
+    name="projects_info.html"
+    context="eportfolio.interfaces.IStudent"
+    view=".student.student_projects_view"
+    renderer="templates/student_projects.pt"
+    permission="view"
+    />
+    
+  <!-- Teachers -->
+  
+  <view 
+    name="add_teacher.html"
+    context="eportfolio.interfaces.IUsers"
+    view=".teacher.teacher_edit_view"
+    permission="manage_users"
+    />
+    
+  <view
+    context="eportfolio.interfaces.ITeacher"
+    view=".teacher.teacher_view"
+    renderer="templates/teacher.pt"
+    permission="view"
+    />
+    
+  <view 
+    name="edit.html"
+    context="eportfolio.interfaces.ITeacher"
+    view=".teacher.teacher_edit_view"
+    permission="edit"
+    />
+    
+  <!-- Files -->
+    
+  <view
+    context="eportfolio.interfaces.IFile"
+    view=".files.file_view"
+    permission="view"
+    />
+    
+  <!-- Meta competences -->
+
+  <view 
+    context="eportfolio.interfaces.IMetaCompetences"
+    view=".meta_competences.meta_competences_view"
+    renderer="templates/meta_competences.pt"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="add.html"
+    context="eportfolio.interfaces.IMetaCompetences"
+    view=".meta_competence.meta_competence_edit_view"
+    permission="manage_projects"
+    />
+    
+  <view
+    name="edit.html"
+    context="eportfolio.interfaces.IMetaCompetence"
+    view=".meta_competence.meta_competence_edit_view"
+    permission="manage_projects"
+    />
+    
+  <!-- Ajax stuff for containers -->
+  <view
+    name="remove"
+    context="eportfolio.interfaces.IContainer"
+    view=".container.remove_item"
+    permission="view"
+    />
+    
+  <view
+    name="reorder"
+    context="eportfolio.interfaces.IContainer"
+    view=".container.reorder_items"
+    permission="edit"
+    />
+    
+  <!-- Static resources -->
+     
+  <view
+    context="eportfolio.interfaces.IApplication"
+    view=".static_view"
+    name="static"
+    />
+    
+  <!-- Menu infrastructure -->
+  
+  <adapter factory=".menu.GlobalMenu" />
+  <adapter factory=".menu.LocalMenu" />
+  
+  <adapter factory=".menu.StudentHomeEntry" name="home" />
+  <adapter factory=".menu.TeacherHomeEntry" name="home" />
+  <adapter factory=".menu.ProjectsEntry" name="projects" />
+  <adapter factory=".menu.UsersEntry" name="users" />
+  <adapter factory=".menu.CompetencesEntry" name="competences" />
+  
+  <adapter factory=".menu.ActivityEntry" name="activity" />
+  <adapter factory=".menu.ProfileEntry" name="profile" />
+  <adapter factory=".menu.ApplicationEntry" name="application" />>
+  <adapter factory=".menu.StudentCompetencesEntry" name="competences" />
+  <adapter factory=".menu.StudentProjectsEntry" name="projects" /> 
+
+  <adapter factory=".menu.ActivitiesEntry" name="activities" />
+  <adapter factory=".menu.MembersEntry" name="members" />
+  <adapter factory=".menu.ObjectivesEntry" name="objectives" />
+
+</configure>

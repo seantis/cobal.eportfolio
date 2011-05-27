@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 i18n:translate="next_steps">Next Steps</h1>
+    
+    <div class="step-item">
+        <a href="competences">
+            <span class="step-legend" i18n:translate="step_1">1. Add Competences</span>
+            <img src="${api.static_url('imgs/step1.png')}" />
+        </a>
+        <p i18n:translate="step_1_text">Go to the <a href="competences">competence overview page</a> and add the competences (incl. meta-competences).</p>  
+    </div>
+    <div class="step-item">
+        <a href="users">
+            <span class="step-legend" i18n:translate="step_2">2. Add Users</span>
+            <img src="${api.static_url('imgs/step2.png')}" />
+        </a>
+        <p i18n:translate="step_2_text">Go to the <a href="users">users overview page</a> and add teachers and students.</p>  
+    </div>
+    <div class="step-item">
+        <a href="projects">
+            <span class="step-legend" i18n:translate="step_3">3. Add your Project</span>
+            <img src="${api.static_url('imgs/step3.png')}" />
+        </a>
+        <p i18n:translate="step_3_text">Go to the <a href="projects">projects overview page</a> and add a new project.</p>  
+    </div>
+    <div class="step-item">
+        <a href="projects">
+            <span class="step-legend" i18n:translate="step_4">4. Assign Users to your Project</span>
+            <img src="${api.static_url('imgs/step4.png')}" />
+        </a>
+        <p i18n:translate="step_4_text">Open your new project from the <a href="projects">projects overview page</a> and go to the "Members" tab to assign users (students, teachers) to the project</p>  
+    </div>
+    
+    <div class="visual-clear"></div>
+    
+    <!--   
+    
+    <h1 i18n:translate="dashboard">Dashboard</h1>
+    
+    <div class="dashboard-item">
+        <a href="projects">
+            <img src="${api.static_url('imgs/projects.png')}" />
+            <span class="dashboard-legend" i18n:translate="projects">Projects</span>
+        </a>
+    </div>
+    <div class="dashboard-item">
+        <a href="users">
+            <img src="${api.static_url('imgs/users.png')}" />
+            <span class="dashboard-legend" i18n:translate="">Users</span>
+        </a>
+    </div>
+    <div class="dashboard-item">
+        <a href="competences">
+            <img src="${api.static_url('imgs/competences.png')}" />
+            <span class="dashboard-legend" i18n:translate="competences">Competences</span>
+        </a> 
+    </div> 
+    
+    -->
+    
+  
+    
+</div>
+</html>

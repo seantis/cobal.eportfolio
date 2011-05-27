@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE document SYSTEM "http://www.reportlab.com/docs/rml.dtd">
+<document filename="template.pdf"
+          xmlns:tal="http://xml.zope.org/namespaces/tal"
+	      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	      i18n:domain="eportfolio">
+
+
+    <template pageSize="A4" author="www.seantis.ch" title="">
+        <pageTemplate id="main">
+           <frame id="first" x1="72" y1="12" width="451" height="760"/>           
+        </pageTemplate>
+    </template>
+    
+    <stylesheet>
+        <paraStyle name="tableHeader" fontSize="6" alignment="center" />
+        <paraStyle name="tableHeaderSmall" fontSize="4" alignment="center" />
+        <paraStyle name="footer" fontSize="9" alignment="center" />
+        <paraStyle name="normal" fontSize="10" />
+        <paraStyle name="small" fontSize="7.5" />
+        <blockTableStyle id="default">
+            <blockLeftPadding length="1mm" />
+            <blockRightPadding length="1mm" />
+        </blockTableStyle>
+    </stylesheet>
+
+    <story>
+        
+        <h1><tal:block i18n:translate="resume">Resumé -</tal:block> ${student.first_name} ${student.last_name}</h1>
+        
+        <spacer length="20"/>
+                
+        <h3 i18n:translate="personal_data">Personal Data</h3>
+        
+        <blockTable style="default"  colWidths="50% 50%">
+            <tr>
+                <td i18n:translate="name">Name</td>
+                <td>${student.first_name} ${student.last_name}</td>
+                <td i18n:translate="date_of_birth">Date of Birth</td>
+                <td tal:content="student.date_of_birth.strftime('%d.%m.%Y')"></td>
+            </tr>
+            <tr>
+                <td i18n:translate="languages">Languages</td>
+                <td>${student.languages}</td>
+            </tr>
+        </blockTable>
+        
+        <h3 i18n:translate="experiences_interests">Experiences, Interests</h3>
+        
+         <blockTable style="default"  colWidths="25% 75%">
+            <tr>
+                <td vAlign="top" i18n:translate="experiences">Experiences</td>
+                <td><para tal:content="structure api.filter_html(student.experiences)"></para></td>
+            </tr>
+            <tr>
+                <td vAlign="top" i18n:translate="interests">Interests</td>
+                <td><para tal:content="structure api.filter_html(student.interests)"></para></td>
+            </tr>
+            <tr>
+                <td vAlign="top" i18n:translate="hobbies">Hobbies</td>
+                <td><para tal:content="structure api.filter_html(student.hobbies)"></para></td>
+            </tr>
+        </blockTable>
+        
+        <tal:block tal:condition="show_projects">
+        
+            <h2 i18n:translate="projects_at_school">Projects at School</h2>
+        
+            <tal:block tal:repeat="proj_data data">
+
+                <blockTable style="default" colWidths="25% 75%" tal:define="project python: proj_data['project']">
+                
+                    <blockTableStyle id="services">
+                        <lineStyle kind="LINEABOVE" colorName="black" start="0,0" stop="-1,0" thickness="0.25" />
+                        <lineStyle kind="LINEBELOW" colorName="black" start="0,-4" stop="-1,-4" thickness="0.25" />
+                        <blockSpan start="0,0" stop="-1,0"/>
+                    </blockTableStyle>
+                
+                    <tr>
+                        <td><para>${project.title}</para></td>
+                    </tr>
+                    <tr>
+                        <td i18n:translate="date">Date</td>
+                        <td><para>${project.start_date.strftime('%d.%m.%Y')} - ${project.end_date.strftime('%d.%m.%Y')}</para></td>
+                    </tr>
+                    <tr>
+                        <td i18n:translate="task">Task</td>
+                        <td><para tal:content="structure api.filter_html(project.description)"></para></td>
+                    </tr>
+                    <tr>
+                        <td vAlign="top" i18n:translate="gained_competences">Gained Competences</td>
+                        <td>
+                            <tal:block tal:repeat="comp_data python: proj_data['competences']">
+                                <para>
+                                    - ${comp_data['competence'].title}
+                                </para>
+                            </tal:block>
+                        </td>
+                    </tr>
+                </blockTable>
+        
+                <spacer length="30"/>
+        
+            </tal:block>
+
+        </tal:block>
+        
+        <tal:block tal:condition="show_journal">
+
+            <nextPage/>
+        
+            <h2 i18n:translate="journal">Journal</h2>
+        
+            <tal:block tal:repeat="journal_entry student.journal_entries">
+                <para style="small">${journal_entry.date.strftime('%d.%m.%Y %H:%M:%S')}</para>
+                <para tal:content="structure api.filter_html(journal_entry.text)"></para>
+            
+                <spacer length="5"/>
+            
+                <tal:block tal:repeat="comment journal_entry.comments">
+                    <para style="small">${comment.date}</para>
+                    <para tal:content="structure api.filter_html(comment.text)"></para>
+                    <spacer length="10"/>
+                </tal:block>
+            
+                <spacer length="20"/>
+            </tal:block>
+        
+        </tal:block>
+        
+    </story>
+
+</document>

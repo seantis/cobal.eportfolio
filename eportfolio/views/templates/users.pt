@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 i18n:translate="students">Students</h1>
+    
+    <div class="add-box">
+        <button class="add" onclick="parent.location='${api.model_url(context, 'add_student.html')}'" i18n:translate="add_student">Add student</button>
+    </div>
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+        <tr>
+            <th i18n:translate="name">Name</th> 
+            <th i18n:translate="email">E-mail</th>
+            <th></th>
+            <th i18n:translate="project">Project</th>
+            <th></th>
+        </tr>
+        <tr tal:repeat="student students" tal:attributes="class python: 'item ' + str(repeat['student'].odd() and 'even' or 'odd')" id="${student.id}">
+            <td><a href="${api.model_url(student)}">${student.first_name} ${student.last_name}</a></td>
+            <td>
+                ${student.email}
+            </td>
+            <td>
+                <button class="email" onclick="parent.location='mailto:${student.email}'" i18n:translate="email">email</button> 
+
+            </td>   
+            <td>
+                <a tal:repeat="project student.projects" href="${api.model_url(api.root, 'projects', str(project.id))}">${project.title}<tal:block tal:condition="python: not repeat['project'].end" >,</tal:block></a> 
+            </td>
+            <td>
+                <div class="small-button">
+                    <button class="edit" tal:condition="api.has_permission('edit', student)" onclick="parent.location='${api.model_url(student, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="remove" tal:condition="api.has_permission('remove', student)">Remove</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <h1 i18n:translate="teachers">Teachers</h1>
+    
+    <div class="add-box">
+        <button class="add" onclick="parent.location='${api.model_url(context, 'add_teacher.html')}'" i18n:translate="add_teacher">Add teacher</button>
+    </div>
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+        <tr>
+            <th i18n:translate="name">Name</th>
+            <th i18n:translate="email">E-mail</th>
+            <th></th> 
+            <th i18n:translate="project">Project</th>
+            <th></th>     
+        </tr>
+        <tr tal:repeat="teacher teachers" tal:attributes="class python: 'item ' + str(repeat['teacher'].odd() and 'even' or 'odd')" id="${teacher.id}">
+            <td><a href="${api.model_url(teacher)}">${teacher.first_name} ${teacher.last_name}</a></td>
+            <td>
+                ${teacher.email}
+            </td>
+            <td>
+                <button class="email" onclick="parent.location='mailto:${teacher.email}'" i18n:translate="email">email</button>
+            </td>
+            <td>
+                <a tal:repeat="project teacher.projects" href="${api.model_url(api.root, 'projects', str(project.id))}">${project.title}</a> 
+            </td>
+            <td>
+                <div class="small-button">
+                    <button class="edit" tal:condition="api.has_permission('edit', teacher)" onclick="parent.location='${api.model_url(teacher, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button class="remove" tal:condition="api.has_permission('remove', teacher)" i18n:translate="remove">Remove</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+</div>
+</html>

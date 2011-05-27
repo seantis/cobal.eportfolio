@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 tal:condition="add_form" i18n:translate="add_new_project">Add New Project</h1>
+    <h1 tal:condition="not add_form"><tal:block i18n:translate="edit">Edit</tal:block> ${project.title}</h1>
+    
+    <form action="" method="post">
+        <table class="form-table">
+            <tr class="odd">
+                <th><label for="title" i18n:translate="title">Title</label></th>
+                <td colspan="5"><input id="title" type="text" name="title" /><br /><form:error name="title"/></td>
+            </tr>
+            <tr>
+                <th><label for="start_date" i18n:translate="start_date">Start Date</label></th>
+                <td><input id="start_date" class="datepicker" name="start_date" /><br /><form:error name="start_date"/></td>
+                <th><label for="end_date" i18n:translate="end_date">End Date</label></th>
+                <td><input id="end_date" class="datepicker" name="end_date" /><br /><form:error name="end_date"/></td>
+                <th><label for="number" i18n:translate="number">Number</label></th>
+                <td><input id="number" type="text" name="number" /><br /><form:error name="number"/></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="description" i18n:translate="description">Description</label></th>
+                <td colspan="5"><textarea id="description" rows="5" cols="90" name="description"></textarea><br /><form:error name="description"/></td>
+            </tr>
+            <tr>
+                <th><label for="customer_request" i18n:translate="customer_request">Customer Request</label></th>
+                <td colspan="5"><textarea id="customer_request" rows="5" cols="90" name="customer_request"></textarea><br /><form:error name="customer_request"/></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="customer_benefit" i18n:translate="customer_benefit">Customer Benefit</label></th>
+                <td colspan="5"><textarea id="customer_benefit" rows="5" cols="90" name="customer_benefit"></textarea><br /><form:error name="customer_benefit"/></td>
+            </tr>
+            <tr>
+                <th><label for="customer_outcome" i18n:translate="customer_outcome">Customer Outcome</label></th>
+                <td colspan="5"><textarea id="customer_outcome" rows="5" cols="90" name="customer_outcome"></textarea><br /><form:error name="customer_outcome"/></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="risks" i18n:translate="risks">Risks</label></th>
+                <td colspan="5"><textarea id="risks" rows="5" cols="90" name="risks"></textarea><br /><form:error name="risks"/></td>
+            </tr>
+            <tr class="even">
+                <th><label for="budget" i18n:translate="budget">Budget</label></th>
+                <td><input id="budget" cols="90" name="budget" /><br /><form:error name="budget"/></td>
+            </tr>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="preconditions" i18n:translate="preconditions">Preconditions</label></th>
+                <td colspan="5"><textarea id="preconditions" rows="5" cols="90" name="preconditions"></textarea><br /><form:error name="preconditions"/></td>
+            </tr>
+            <tr class="even">
+                <th><label for="environment" i18n:translate="environment">Environment</label></th>
+                <td colspan="5"><textarea id="environment" rows="5" cols="90" name="environment"></textarea><br /><form:error name="environment"/></td>
+            </tr>
+            <tr class="odd">
+                <th><label for="exclusions" i18n:translate="exclusions">Exclusions</label></th>
+                <td colspan="5"><textarea id="exclusions" rows="5" cols="90" name="exclusions"></textarea><br /><form:error name="exclusions"/></td>
+            </tr>
+        </table>
+        
+        <div class="form-controls">
+            <button type="submit" class="save" name="form.submitted" value="Save" i18n:translate="save">Save</button>
+            <button type="submit" class="cancel" name="form.cancel" value="Cancel" i18n:translate="cancel">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
+</html>

@@ -1,0 +1,54 @@
+[DEFAULT]
+debug = false
+
+[app:eportfolio]
+use = egg:eportfolio#app
+reload_templates = false
+debug_authorization = false
+debug_notfound = false
+db_string = postgresql://{username}:{password}@localhost/{database_name}
+available_languages = en de
+default_locale_name = en
+
+upload_directory = %(here)s/uploads
+
+mail_hostname = mail.example.com
+mail_username = info@example.com
+mail_password = password
+mail_queue_path = %(here)s/maildir
+from_mail_address = eportfolio Administrator <mail.example.com>
+
+pw_reset_salt = secret
+
+[filter:who]
+use = egg:repoze.who#config
+config_file = %(here)s/who.ini
+#log_file = stdout
+#log_level = debug
+
+[filter:statusmessage]
+use = egg:qc.statusmessage#middleware
+cookie_name = eportfolio_msg
+
+[filter:weberror]
+use = egg:weberror#error_catcher
+error_message = Internal Server Error
+error_email = info@example.com
+from_address = info@example.com
+smtp_server = mail.example.com
+smtp_username = info@example.com
+smtp_password = password
+
+[pipeline:main]
+pipeline =
+    weberror
+    egg:repoze.tm2#tm
+    egg:repoze.filesafe#filesafe
+    who
+    statusmessage
+    eportfolio
+
+[server:main]
+use = egg:Paste#http
+host = 0.0.0.0
+port = 6543

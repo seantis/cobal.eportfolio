@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:form="http://xml.formencode.org/form"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+      
+<tal:block id="head" metal:fill-slot="head">
+    <script type="text/javascript" src="${api.static_url('js/comments.js')}"></script>
+</tal:block>
+
+<div id="navigation" metal:fill-slot="navigation">
+<ul id="menu">
+  <li><a class="current" href=""><span i18n:translate="activity">Activity</span></a></li>
+  <li><a href="members.html"><span i18n:translate="members_admin_only">Members (Admin only)</span></a></li>
+  <li><a href="indicators.html"><span i18n:translate="indicators_admin_only">Indicators (Admin only)</span></a></li>
+  <li><a href=""><span i18n:translate="stats">Stats</span></a></li>
+</ul>
+</div>
+      
+<div metal:fill-slot="content">
+    
+    <div class="notice" tal:condition="not projects.first()" i18n:translate="no_assigned_project">No projects! Ask your Teacher to assign you to an active project.</div>    
+    
+    <h1><tal:block i18n:translate="projects">Projects</tal:block> - ${context.first_name} ${context.last_name}</h1>
+    
+    <tal:block tal:repeat="project projects">
+    
+        <h1>${project.title}</h1>
+    
+        <table class="listing-table">
+            <tr class="odd">
+                <th i18n:translate="start_date">Start Date</th>
+                <td tal:content="project.start_date.strftime('%d.%m.%Y')"></td>
+                <th i18n:translate="end_date">End Date</th>
+                <td tal:content="project.end_date.strftime('%d.%m.%Y')"></td>
+                <th i18n:translate="number">Number</th>
+                <td>${project.number}</td> 
+            </tr>
+            <tr class="even">
+                <th i18n:translate="description">Description</th>
+                <td colspan="5" tal:content="structure project.description"></td>
+            </tr>
+            <tr class="odd">
+                <th i18n:translate="customer_request">Customer Request</th>
+                <td colspan="5" tal:content="structure project.customer_request"></td>
+            </tr>
+            <tr class="even">
+                <th i18n:translate="customer_benefit">Customer Benefit</th>
+                <td colspan="5" tal:content="structure project.customer_benefit"></td>
+            </tr>
+            <tr class="odd">
+                <th i18n:translate="customer_outcome">Customer Outcome</th>
+                <td colspan="5" tal:content="structure project.customer_outcome"></td>
+            </tr>
+            <tr class="even">
+                <th i18n:translate="risks">Risks</th>
+                <td colspan="5" tal:content="structure project.risks"></td>
+            </tr>
+            <tr class="odd">
+                <th i18n:translate="bugdet">Budget</th>
+                <td colspan="5">${project.budget}</td>
+            </tr>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+            <tr class="even">
+                <th i18n:translate="preconditions">Preconditions</th>
+                <td colspan="5" tal:content="structure project.preconditions"></td>
+            </tr>
+            <tr class="odd">
+                <th i18n:translate="environment">Environment</th>
+                <td colspan="5" tal:content="structure project.environment"></td>
+            </tr>
+            <tr class="even">
+                <th i18n:translate="exclusions">Exclusions</th>
+                <td colspan="5" tal:content="structure project.exclusions"></td>
+            </tr>          
+        </table>
+        
+        <h2 i18n:translate="objectives">Objectives</h2>
+        
+        <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+            <tr>
+                <th i18n:translate="title">Title</th>
+                <th i18n:translate="description">Desciption</th>
+            </tr>
+            <tr tal:repeat="objective project['objectives']" tal:attributes="class python: 'item ' + str(repeat['objective'].odd() and 'even' or 'odd')" id="${objective.id}">
+                <td>
+                    ${objective.title}
+                </td>
+                <td tal:content="structure objective.description"></td>
+            </tr>
+        </table>
+              
+    </tal:block>
+    
+</div>
+
+</html>

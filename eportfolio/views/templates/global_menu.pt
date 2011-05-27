@@ -1,0 +1,11 @@
+<tal:block >
+<div id="global-navigation">
+    <ul id="global-menu" tal:condition="entries">
+        <tal:block tal:repeat="entry entries">
+            <li id="${entry.title}">
+                <a class="${entry.active and 'current' or ''}" href="${entry.url}"><span>${entry.title}</span></a>
+            </li>
+        </tal:block>
+    </ul>
+</div>
+</tal:block>

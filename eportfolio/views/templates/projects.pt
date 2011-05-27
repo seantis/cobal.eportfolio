@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="eportfolio"
+      metal:use-macro="api.main_template.macros['main']">
+
+<div metal:fill-slot="content" style="width: 980px">
+    
+    <h1 i18n:translate="projects">Projects</h1>
+    <div class="add-box">
+        <button class="add" onclick="parent.location='${api.model_url(context, 'add.html')}'" i18n:translate="add_new_project">Add new Project</button>
+    </div> 
+    
+    <h3 i18n:translate="current_projects">Current Projects</h3>
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}">
+        <tr>
+            <th i18n:translate="name">Name</th>
+            <th i18n:translate="description">Task</th>
+            <th i18n:translate="number">Number</th>
+            <th i18n:translate="date">Date</th>
+            <th style="width: 90px"></th>
+        </tr>
+        <tr class="odd" tal:condition="python: not current_projects">
+            <td colspan="5" i18n:translate="no_current_projects">No current projects</td>
+        </tr>
+        <tr tal:repeat="project current_projects" tal:attributes="class python: 'item ' + str(repeat['project'].odd() and 'even' or 'odd')" id="${project.id}">
+            <td><a href="${api.model_url(project)}" tal:omit-tag="python: not api.has_permission('view', project)">${project.title}</a></td>
+            <td tal:content="structure project.description"></td>
+            <td>${project.number}</td>
+            <td><tal:block tal:content="project.start_date.strftime('%d.%m.%Y')" /> - <tal:block tal:content="project.end_date.strftime('%d.%m.%Y')" /></td>
+            <td style="white-space: nowrap">
+                <div class="small-button">
+                    <button tal:condition="python: api.has_permission('edit', project)" class="edit" onclick="parent.location='${api.model_url(project, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button tal:condition="python: api.has_permission('remove', project) and not project.entries" class="remove" i18n:translate="remove">Remove</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <h3 i18n:translate="past_projects">Past Projects</h3> 
+    
+    <table class="listing-table container" id="${api.model_url(context).rstrip('/')}" tal:condition="python: past_projects">
+        <tr>
+            <th i18n:translate="name">Name</th>
+            <th i18n:translate="description">Task</th>
+            <th i18n:translate="number">Number</th>
+            <th i18n:translate="date">Date</th>
+            <th style="width: 90px"></th>
+        </tr>
+        <tr tal:repeat="project past_projects" tal:attributes="class python: 'item ' + str(repeat['project'].odd() and 'even' or 'odd')" id="${project.id}">
+            <td><a href="${api.model_url(project)}" tal:omit-tag="python: not api.has_permission('view', project)">${project.title}</a></td>
+            <td tal:content="structure project.description"></td>
+            <td>${project.number}</td>
+            <td><tal:block tal:content="project.start_date.strftime('%d.%m.%Y')" /> - <tal:block tal:content="project.end_date.strftime('%d.%m.%Y')" /></td>
+            <td style="white-space: nowrap">
+                <div class="small-button">
+                    <button tal:condition="python: api.has_permission('edit', project)" class="edit" onclick="parent.location='${api.model_url(project, 'edit.html')}'" i18n:translate="edit">Edit</button>
+                    <button tal:condition="python: api.has_permission('remove', project)" class="remove" i18n:translate="remove">Remove</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+</div>
+</html>
