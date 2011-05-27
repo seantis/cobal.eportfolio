@@ -1,0 +1,7 @@
+.DS_Store
+*.pyc
+deployment.ini
+eportfolio.ini
+eportfolio.db
+eportfolio.egg-info
+eportfolio.egg-info/*
