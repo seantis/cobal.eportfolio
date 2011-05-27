@@ -18,7 +18,7 @@ http://www.cobal.eu
 Installation
 ------------
 
-See [INSTALL.md](https://github.com/seantis/cobal.eportfolio/blob/epsilon/INSTALL.md).
+See [INSTALL.md](https://github.com/seantis/eportfolio/blob/master/INSTALL.md).
 
 Contact
 -------
